@@ -11,7 +11,7 @@ class SphinxHTMLDataProvider(SphinxBaseDataProvider):
         with codecs.open(filename, 'r', encoding='utf-8') as f:
             content = f.read()
             title = re.findall(r'<title.*?>(.+?)</title>', content, re.DOTALL)[0]
-            title = ' '.join([line.strip() for line in title])
+            title = ''.join([line.strip() for line in title])
             body = re.findall(r'<body.*?>(.+?)</body>', content, re.DOTALL)[0].strip()
 
         return title, body
