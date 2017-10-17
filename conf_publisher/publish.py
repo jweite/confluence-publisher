@@ -1,5 +1,6 @@
 import argparse
 import copy
+import os
 
 from . import log, setup_logger
 from .auth import parse_authentication
@@ -13,7 +14,7 @@ from .mutators.page_mutator import WatermarkPageMutator, LinkPageMutator, Anchor
 
 
 def get_data_provider_class(config):
-    if config.source_ext == '.html':
+    if config.source_ext == '.html' or 'html' in config.source_ext:
         data_provider_class = SphinxHTMLDataProvider
     else:
         data_provider_class = SphinxFJsonDataProvider
